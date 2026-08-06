@@ -1,0 +1,91 @@
+/* The Lisbon Agent — global styles */
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* Smooth custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: hsl(222 58% 11%);
+}
+::-webkit-scrollbar-thumb {
+  background: hsl(41 40% 50% / 0.5);
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(41 48% 57% / 0.7);
+}
+
+/* Selection */
+::selection {
+  background: hsl(41 48% 57% / 0.85);
+  color: hsl(222 58% 11%);
+}
+
+/* Reveal-on-scroll */
+.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* Hero ken-burns slow zoom */
+@keyframes ken-burns {
+  0% {
+    transform: scale(1) translate3d(0, 0, 0);
+  }
+  100% {
+    transform: scale(1.12) translate3d(-1.5%, -1%, 0);
+  }
+}
+.animate-ken-burns {
+  animation: ken-burns 22s ease-out forwards;
+}
+
+/* Slow shimmer for gold accents */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* Marquee for trust bar */
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .animate-ken-burns {
+    animation: none;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}
+
